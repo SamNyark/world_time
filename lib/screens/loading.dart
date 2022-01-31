@@ -9,7 +9,10 @@ class Loading extends StatefulWidget {
 
 class _LoadingState extends State<Loading> {
   void worldTimeSetup() async {
-    var instance = WorldTimeApi(url: "Africa/Abidjan", location: "Abidjan", flag: "Abidjan.jpg");
+    var instance = WorldTimeApi(
+        url: "Africa/Abidjan",
+        location: "Abidjan",
+        flag: "assets/images/cote.png");
     await instance.getTime();
     Navigator.pushReplacementNamed(context, "/home", arguments: {
       "location": instance.location,
@@ -27,13 +30,13 @@ class _LoadingState extends State<Loading> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue,
-      body: Center(
-        child: SpinKitCircle(
-          color: Colors.white,
-          size: 70.0,
-  ),
-         ),
-    );
+        body: Container(
+            decoration: BoxDecoration(color: Color(0xff1a89c9)),
+            child: Center(
+              child: SpinKitCircle(
+                color: Colors.white,
+                size: 70.0,
+              ),
+            )));
   }
 }

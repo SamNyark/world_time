@@ -7,8 +7,9 @@ class WorldTimeApi {
   String flag;
   String location;
   String time;
+  String country;
 
-  WorldTimeApi({this.flag, this.location, this.url});
+  WorldTimeApi({this.flag, this.location, this.url, this.country});
 
   Future<void> getTime() async {
     Response response = await get("http://worldtimeapi.org/api/timezone/$url");

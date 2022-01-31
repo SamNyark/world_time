@@ -15,9 +15,9 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        cardColor: Colors.cyan[400],
-        scaffoldBackgroundColor: Colors.white,
-      ),
+          colorScheme:
+              ThemeData().colorScheme.copyWith(primary: Color(0xff918f8a)),
+          cardColor: Color(0xff918f8a)),
       debugShowCheckedModeBanner: false,
       routes: {
         "/": (context) => Loading(),
