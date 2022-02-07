@@ -9,7 +9,7 @@ class ChooseLocation extends StatefulWidget {
 
 class _ChooseLocationState extends State<ChooseLocation> {
   void updateTime(index) async {
-    var instance = locations[index];
+    var instance = filtered[index];
     await instance.getTime();
     Navigator.pop(context, {
       "location": instance.location,
