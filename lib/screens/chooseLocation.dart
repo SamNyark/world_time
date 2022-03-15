@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:draggable_scrollbar/draggable_scrollbar.dart';
-import 'package:world_time/locations.dart';
+import 'package:world_time/helpers/Dimensions.dart';
+import 'package:world_time/helpers/locations.dart';
+import 'package:get/get.dart';
 
 class ChooseLocation extends StatefulWidget {
   @override
@@ -11,7 +13,7 @@ class _ChooseLocationState extends State<ChooseLocation> {
   void updateTime(index) async {
     var instance = filtered[index];
     await instance.getTime();
-    Navigator.pop(context, {
+    Get.back(result: {
       "location": instance.location,
       "flag": instance.flag,
       "time": instance.time
@@ -52,43 +54,43 @@ class _ChooseLocationState extends State<ChooseLocation> {
           elevation: 0.0,
           title: Text(
             " Choose location",
-            style: TextStyle(fontFamily: "vollkorn", fontSize: 23.0),
+            style: TextStyle(fontFamily: "vollkorn", fontSize: Dimensions.height20),
           ),
           centerTitle: true,
         ),
         body: Column(
           children: [
             SizedBox(
-              height: 5,
+              height: Dimensions.height5,
             ),
             Container(
-              width: 350,
-              height: 40,
+              width: Dimensions.width350,
+              height: Dimensions.height40,
               child: TextField(
                 onChanged: (text) {
                   searchBox(text);
                 },
                 controller: _textEditingController,
                 decoration: InputDecoration(
-                    contentPadding: EdgeInsets.symmetric(vertical: 2),
+                    contentPadding: EdgeInsets.symmetric(vertical: Dimensions.height2),
                     hintText: "search country",
                     prefixIcon: Icon(Icons.search),
                     focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                             style: BorderStyle.solid,
                             color: Colors.black,
-                            width: 3),
-                        borderRadius: BorderRadius.circular(5)),
+                            width: Dimensions.height3),
+                        borderRadius: BorderRadius.circular(Dimensions.height5)),
                     enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                             style: BorderStyle.solid,
                             color: Color(0xff918f8a),
-                            width: 3),
-                        borderRadius: BorderRadius.circular(5))),
+                            width: Dimensions.height3),
+                        borderRadius: BorderRadius.circular(Dimensions.height5))),
               ),
             ),
             SizedBox(
-              height: 5,
+              height: Dimensions.height5,
             ),
             Expanded(
               child: DraggableScrollbar.semicircle(
@@ -101,9 +103,9 @@ class _ChooseLocationState extends State<ChooseLocation> {
                     return Card(
                         elevation: 0,
                         child: ListTile(
-                          contentPadding: EdgeInsets.all(2.0),
+                          contentPadding: EdgeInsets.all(Dimensions.height2),
                           leading: CircleAvatar(
-                            radius: 30.0,
+                            radius: Dimensions.height30,
                             backgroundImage: AssetImage(filtered[index].flag),
                           ),
                           subtitle: Text(
@@ -111,7 +113,7 @@ class _ChooseLocationState extends State<ChooseLocation> {
                             style: TextStyle(
                               fontFamily: "vollkorn",
                               color: Colors.white,
-                              fontSize: 16.0,
+                              fontSize: Dimensions.height15,
                             ),
                           ),
                           title: Text(
@@ -119,7 +121,7 @@ class _ChooseLocationState extends State<ChooseLocation> {
                             style: TextStyle(
                               fontFamily: "vollkorn",
                               color: Colors.white,
-                              fontSize: 20.0,
+                              fontSize: Dimensions.height18,
                             ),
                           ),
                           onTap: () {

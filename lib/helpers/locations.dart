@@ -1,4 +1,4 @@
-import 'package:world_time/worldTimeApi.dart';
+import 'package:world_time/services/worldTimeApi.dart';
 
 List locations = [
   WorldTimeApi(

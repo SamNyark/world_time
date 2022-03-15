@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:world_time/worldTimeApi.dart';
+import 'package:world_time/screens/home.dart';
+import 'package:world_time/services/worldTimeApi.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:get/get.dart';
 
 class Loading extends StatefulWidget {
   @override
@@ -14,11 +16,11 @@ class _LoadingState extends State<Loading> {
         location: "Abidjan",
         flag: "assets/images/cote.png");
     await instance.getTime();
-    Navigator.pushReplacementNamed(context, "/home", arguments: {
+    Get.offAll(Home(), arguments: {
       "location": instance.location,
       "flag": instance.flag,
       "time": instance.time
-    });
+    }, transition: Transition.leftToRightWithFade, duration: Duration(seconds: 1));
   }
 
   @override
@@ -31,12 +33,12 @@ class _LoadingState extends State<Loading> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
-            decoration: BoxDecoration(color: Color(0xff1a89c9)),
-            child: Center(
-              child: SpinKitCircle(
-                color: Colors.white,
-                size: 70.0,
-              ),
-            )));
+          height: double.maxFinite,
+          width: double.maxFinite,
+            decoration: BoxDecoration(
+              image: DecorationImage(image: AssetImage("assets/images/load.png"), fit: BoxFit.cover)
+            ),
+            
+            ));
   }
 }

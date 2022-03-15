@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:world_time/helpers/Dimensions.dart';
+import 'package:world_time/screens/chooseLocation.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -9,7 +12,7 @@ class _HomeState extends State<Home> {
   Map data = {};
   @override
   Widget build(BuildContext context) {
-    data = data.isNotEmpty ? data : ModalRoute.of(context).settings.arguments;
+    data = data.isNotEmpty ? data : Get.arguments;
     return Scaffold(
       body: Stack(fit: StackFit.expand, children: [
         Container(
@@ -19,50 +22,50 @@ class _HomeState extends State<Home> {
                   fit: BoxFit.cover)),
         ),
         Positioned(
-          top: 150,
-          left: 40,
-          right: 40,
+          top: Dimensions.height150,
+          left: Dimensions.width40,
+          right: Dimensions.width40,
           child: Column(
             children: [
               SizedBox(
-                height: 30.0,
+                height: Dimensions.height30,
               ),
               Text(
                 data["location"],
                 style: TextStyle(
                     fontFamily: "vollkorn",
-                    fontSize: 40.0,
+                    fontSize: Dimensions.height40,
                     color: Colors.black,
                     fontWeight: FontWeight.bold),
               ),
               SizedBox(
-                height: 10.0,
+                height: Dimensions.height10,
               ),
               Container(
-                height: 70,
-                width: 70,
+                height: Dimensions.height70,
+                width: Dimensions.width70,
                 decoration: BoxDecoration(
                     image: DecorationImage(image: AssetImage(data["flag"]))),
               ),
               SizedBox(
-                height: 10,
+                height: Dimensions.height10,
               ),
               Text(data["time"],
                   style: TextStyle(
-                      fontSize: 60.0,
+                      fontSize: Dimensions.height70,
                       fontFamily: "bitter",
                       color: Colors.white)),
-              SizedBox(height: 70.0),
+              SizedBox(height: Dimensions.height70),
               Container(
-                height: 50,
-                width: 205,
+                height: Dimensions.height50,
+                width: Dimensions.width200,
                 decoration: BoxDecoration(
                     color: Colors.black,
-                    borderRadius: BorderRadius.circular(10)),
+                    borderRadius: BorderRadius.circular(Dimensions.height10)),
                 child: TextButton(
                     onPressed: () async {
                       dynamic results =
-                          await Navigator.pushNamed(context, "/chooseLocation");
+                          await Get.to(ChooseLocation());
                       setState(() {
                         data = {
                           "time": results["time"],
@@ -76,16 +79,16 @@ class _HomeState extends State<Home> {
                       children: [
                         Icon(
                           Icons.edit_location,
-                          size: 25.0,
+                          size: Dimensions.height25,
                           color: Colors.grey[200],
                         ),
                         SizedBox(
-                          width: 5,
+                          width: Dimensions.width5,
                         ),
                         Text(
                           "change location",
                           style: TextStyle(
-                              fontSize: 20.0,
+                              fontSize: Dimensions.height20,
                               fontFamily: "vollkorn",
                               color: Colors.grey[200]),
                         ),
