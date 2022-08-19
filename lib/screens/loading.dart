@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:world_time/screens/home.dart';
 import 'package:world_time/services/worldTimeApi.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 
 class Loading extends StatefulWidget {

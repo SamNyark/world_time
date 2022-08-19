@@ -85,7 +85,7 @@ class _ChooseLocationState extends State<ChooseLocation> {
                         borderSide: BorderSide(
                             style: BorderStyle.solid,
                             color: Color(0xff918f8a),
-                            width: Dimensions.height3),
+                            width: Dimensions.height2),
                         borderRadius: BorderRadius.circular(Dimensions.height5))),
               ),
             ),
